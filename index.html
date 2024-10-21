@@ -54,6 +54,7 @@
 	<script src="js/modernizr-2.6.2.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 	<!-- FOR IE9 below -->
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
@@ -81,7 +82,15 @@
 	  transform: translateY(100vh); /* Rơi xuống toàn bộ màn hình */
 	}
   }
-  
+
+  .wedding-title {
+	font-family: 'Dancing Script', cursive !important;
+	font-size: 10rem !important;
+	text-align: center !important;
+	margin: 20px 0 !important;
+	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2) !important;
+  }
+
 	</style>
 	<script>
 		// Hàm tạo icon trái tim
@@ -98,6 +107,22 @@
 		}
 		
 		setInterval(createHeartIcon, 1000);
+
+		document.addEventListener("DOMContentLoaded", function() {
+			const music = document.getElementById("background-music");
+			const toggleMusicButton = document.getElementById("toggle-music");
+		
+			toggleMusicButton.addEventListener("click", function() {
+				if (music.paused) {
+					music.play();
+					toggleMusicButton.innerHTML = '<i class="fa fa-volume-off" aria-hidden="true"></i>'; // Biểu tượng tắt âm
+				} else {
+					music.pause();
+					toggleMusicButton.innerHTML = '<i class="fa fa-volume-up" aria-hidden="true"></i>'; // Biểu tượng bật âm
+				}
+			});
+		});		
+		
 	  </script>
 
 	</head>
@@ -116,12 +141,20 @@
 						<li class="active"><a href="#fh5co-event">Events</a></li>
 						<li class="active"><a href="#fh5co-gallery">Gallery</a></li>
 						<li class="active"><a href="#fh5co-services">Highlights</a></li>
+						<audio id="background-music" loop autoplay>
+							<source src="audios/Ido.mp3" type="audio/mpeg">
+							Your browser does not support the audio element.
+						</audio>
+						<button id="toggle-music" class="btn btn-danger btn-sm">
+							<i class="fa fa-volume-up" aria-hidden="true"></i>
+						</button>
 					</ul>
 				</div>
 			</div>
 			
 		</div>
 	</nav>
+
 
 	<header id="fh5co-header" class="fh5co-cover" role="banner" style="background-image:url(images/bg.jpg);" data-stellar-background-ratio="0.5">
 		<div class="overlay"></div>
@@ -130,7 +163,7 @@
 				<div class="col-md-8 col-md-offset-2 text-center">
 					<div class="display-t">
 						<div class="display-tc animate-box" data-animate-effect="fadeIn">
-							<h1>Khoa &amp; Ngọc</h1>
+							<h1 class="wedding-title">Khoa &amp; Ngọc</h1>
 							<br>
 							<img src="images/fprint.png" alt="Khoa & Ngọc">
 							<h2>15.10.2024</h2>
