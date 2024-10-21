@@ -132,14 +132,16 @@
 		document.addEventListener("DOMContentLoaded", function() {
 			const music = document.getElementById("background-music");
 			const toggleMusicButton = document.getElementById("toggle-music");
+
+			music.play();
 		
 			toggleMusicButton.addEventListener("click", function() {
 				if (music.paused) {
-					music.play();
-					toggleMusicButton.innerHTML = '<i class="fa fa-volume-off" aria-hidden="true"></i>'; // Biểu tượng tắt âm
-				} else {
 					music.pause();
 					toggleMusicButton.innerHTML = '<i class="fa fa-volume-up" aria-hidden="true"></i>'; // Biểu tượng bật âm
+				} else {
+					music.play();
+					toggleMusicButton.innerHTML = '<i class="fa fa-volume-off" aria-hidden="true"></i>'; // Biểu tượng tắt âm
 				}
 			});
 		});
