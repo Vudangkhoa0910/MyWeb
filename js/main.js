@@ -231,19 +231,3 @@
 
 }());
 
-
-$(document).ready(function() {
-	// Lấy tất cả các liên kết trong menu có chứa hashtag (#)
-	$('a[href^="#"]').on('click', function(event) {
-	  event.preventDefault();
-  
-	  var target = this.hash; // Lấy phần tử mà liên kết hướng tới
-	  var $target = $(target);
-  
-	  // Cuộn mượt đến phần tử đích với thời gian 800ms
-	  $('html, body').animate({
-		scrollTop: $target.offset().top
-	  }, 800, 'easeInOutExpo');  // 'easeInOutExpo' là loại hiệu ứng mượt
-	});
-  });
-  
