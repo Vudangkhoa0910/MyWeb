@@ -85,12 +85,33 @@
 
   .wedding-title {
 	font-family: 'Dancing Script', cursive !important;
-	font-size: 7rem !important;
+	font-size: 5.5rem !important;
 	text-align: center !important;
-	margin: 20px 0 !important;
 	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2) !important;
   }
 
+  .music-controls {
+    display: flex; /* Sử dụng Flexbox */
+    justify-content: center; /* Căn giữa nội dung */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    gap: 10px; /* Khoảng cách giữa các nút */
+    margin-top: 15px; /* Khoảng cách phía trên nếu cần */
+}
+
+.music-controls button {
+    background-color: #f44336; /* Màu đỏ */
+    border: none; /* Bỏ viền */
+    border-radius: 50%; /* Để nút có dạng tròn */
+    width: 40px; /* Chiều rộng của nút */
+    height: 40px; /* Chiều cao của nút */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.music-controls button:hover {
+    background-color: #d32f2f; /* Màu sắc khi hover */
+}
 	</style>
 	<script>
 		// Hàm tạo icon trái tim
@@ -121,7 +142,9 @@
 					toggleMusicButton.innerHTML = '<i class="fa fa-volume-up" aria-hidden="true"></i>'; // Biểu tượng bật âm
 				}
 			});
-		});		
+		});
+		
+		
 		
 	  </script>
 
@@ -134,24 +157,15 @@
 	<nav class="fh5co-nav" role="navigation">
 		<div class="container">
 			<div class="row">
-	
 				<div class="col-xs-10 text-right menu-1">
 					<ul>
 						<li class="active"><a href="index.html">Home</a></li>
 						<li class="active"><a href="#fh5co-event">Events</a></li>
 						<li class="active"><a href="#fh5co-gallery">Gallery</a></li>
 						<li class="active"><a href="#fh5co-services">Highlights</a></li>
-						<audio id="background-music" loop autoplay>
-							<source src="audios/Ido.mp3" type="audio/mpeg">
-							Your browser does not support the audio element.
-						</audio>
-						<button id="toggle-music" class="btn btn-danger btn-sm">
-							<i class="fa fa-volume-up" aria-hidden="true"></i>
-						</button>
 					</ul>
 				</div>
 			</div>
-			
 		</div>
 	</nav>
 
@@ -171,13 +185,24 @@
 							<div class="flipTimebox">
 								<div class="clock clock-fix"></div>
 							</div>
-							<p><a href="#fh5co-event" class="btn btn-default btn-sm">Save our date</a></p>
+							<p class="me-2"><a href="#fh5co-event" class="btn btn-default btn-sm">Save our date</a></p>
+							<div class="music-controls d-flex justify-content-center mt-3">
+								<audio id="background-music" loop autoplay>
+									<source src="./audios/Ido.mp3" type="audio/mpeg">
+									Your browser does not support the audio element.
+								</audio>
+								<button id="toggle-music" class="btn btn-danger btn-sm">
+									<i class="fa fa-volume-up" aria-hidden="true"></i>
+								</button>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</header>	
+	</header>
+	
+	
 
 
 
