@@ -53,36 +53,52 @@
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 	<!-- FOR IE9 below -->
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
 
 	<style>
-		/* Tạo hiệu ứng rơi cho các trái tim */
-.heart {
-	position: absolute;
-	width: 50px;
-	height: 50px;
-	background-image: url('images/heart.png'); /* Đường dẫn tới hình trái tim */
-	background-size: cover;
-	animation: fall 5s infinite linear;
-	z-index: 10;
-	opacity: 0.7;
+/* Thiết lập để trái tim luôn nằm trên cùng */
+.heart-icon {
+	position: fixed; /* Giữ trái tim cố định khi cuộn trang */
+	font-size: 30px;
+	color: red;
+	top: -50px; /* Bắt đầu từ phía trên màn hình */
+	z-index: 9999; /* Z-index đủ lớn để icon hiển thị trên cùng */
+	opacity: 0.9;
+	animation: fall 5s infinite linear; /* Tạo hiệu ứng rơi */
+	pointer-events: none; /* Để tránh icon nhận bất kỳ sự tương tác nào */
   }
   
+  /* Hiệu ứng rơi xuống */
   @keyframes fall {
 	0% {
-	  transform: translateY(-100px);
-	  opacity: 0.7;
+	  transform: translateY(-50px);
 	}
 	100% {
-	  transform: translateY(100vh);
-	  opacity: 0;
+	  transform: translateY(100vh); /* Rơi xuống toàn bộ màn hình */
 	}
   }
   
 	</style>
+	<script>
+		// Hàm tạo icon trái tim
+		function createHeartIcon() {
+		  const heart = document.createElement('i');
+		  heart.classList.add('fas', 'fa-heart', 'heart-icon');
+		  document.body.appendChild(heart);
+		  heart.style.left = Math.random() < 0.5 
+			? `${Math.random() * 15}vw`  // Bên trái
+			: `${80 + Math.random() * 15}vw`;  // Bên phải
+		  setTimeout(() => {
+			heart.remove();
+		  }, 5000);
+		}
+		
+		setInterval(createHeartIcon, 1000);
+	  </script>
 
 	</head>
 	<body>
@@ -292,13 +308,14 @@
 			});
 		  });
 
-
-		  function createHeart() {
-			const heart = document.createElement('div');
-			heart.classList.add('heart');
+		  function createHeartIcon() {
+			const heart = document.createElement('i');
+			heart.classList.add('fas', 'fa-heart', 'heart-icon');
+			
+			// Đảm bảo chèn vào đầu body để không bị ảnh hưởng bởi các thành phần khác
 			document.body.appendChild(heart);
 		  
-			// Đặt vị trí ngẫu nhiên cho trái tim (2 bên của trang)
+			// Đặt vị trí trái tim ngẫu nhiên (ở hai bên màn hình)
 			heart.style.left = Math.random() < 0.5 
 			  ? `${Math.random() * 20}vw`  // Trái bên trái
 			  : `${80 + Math.random() * 20}vw`;  // Trái bên phải
@@ -309,10 +326,8 @@
 			}, 5000);
 		  }
 		  
-		  // Tạo trái tim liên tục mỗi 1 giây
-		  setInterval(createHeart, 1000);
-		  
-		  
+		  // Tạo trái tim mới mỗi 1 giây
+		  setInterval(createHeartIcon, 1000);		  
 	</script>
 	<center>Copyright by KhoaBuit</a> </center>
 	</body>
